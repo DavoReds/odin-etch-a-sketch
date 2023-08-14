@@ -22,6 +22,23 @@ function paint(element) {
     element.classList.add("painted");
 }
 
+function changeGridSize() {
+    const newSize = prompt("What grid size would you like?");
+
+    if (isNaN(+newSize) || +newSize < 0 || +newSize > 100) {
+        console.error("That was not a valid input!");
+        const error = document.querySelector(".error");
+        error.textContent = "You must input a number between 0 and 100.";
+    }
+
+    const container = document.querySelector(".grid-container");
+    container.replaceChildren();
+
+    document.documentElement.style.setProperty("--grid-size", +newSize);
+
+    createGrid(+newSize, container);
+}
+
 // Create initial grid after page load
 const initialGridSize = 16;
 const container = document.querySelector(".grid-container");
@@ -30,7 +47,8 @@ createGrid(initialGridSize, container);
 
 // Reset Functionality
 const resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", () => {
-    const cells = document.querySelectorAll(".painted");
-    cells.forEach((cell) => cell.classList.remove("painted"));
-});
+resetButton.addEventListener("click", () => location.reload());
+
+// Change grid size functionality
+const newGridButton = document.querySelector("#change-size");
+newGridButton.addEventListener("click", changeGridSize);
