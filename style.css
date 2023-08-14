@@ -1,5 +1,4 @@
 :root {
-  --clr-background: white;
   --grid-size: 16;
 }
 
@@ -34,14 +33,14 @@ button {
 }
 
 .grid-cell {
-  background: var(--clr-background);
+  background: hsla(0, 0%, 100%, 1);
   border: black solid 1px;
   width: calc(900px / var(--grid-size));
   height: calc(900px / var(--grid-size));
 }
 
 .painted {
-  --clr-background: black;
+  background: hsla(0, 0%, 0%, 1);
 }
 
 .controls {
